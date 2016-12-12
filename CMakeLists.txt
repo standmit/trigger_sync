@@ -29,20 +29,6 @@ add_message_files(
 
 )
 
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
-
-## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
-
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
@@ -82,74 +68,14 @@ add_dependencies(trigger_sync_lib trigger_sync_generate_messages_cpp)
 ## Declare a cpp executable
 add_executable(pps_trigger             src/pps_trigger.cpp)
 add_executable(pps_config              src/pps_config.c)
-add_executable(fake_camera             src/demo/fake_camera.cpp)
-add_executable(fake_imu                src/demo/fake_IMU.cpp)
-add_executable(fake_trigger_line       src/demo/fake_trigger_line.cpp)
 add_executable(local_clock_syncroniser src/local_clock_syncroniser_node.cpp)
 add_executable(test_trigger_sync       src/test_trigger_sync.cpp)
-add_executable(stabilise_camera        src/demo/stabilise_camera.cpp)
 
 # Link executables to libraries
 target_link_libraries(pps_trigger       ${catkin_LIBRARIES} trigger_sync_lib)
-target_link_libraries(fake_trigger_line ${catkin_LIBRARIES})
-
-
-target_link_libraries(fake_camera ${catkin_LIBRARIES} trigger_sync_lib)
-target_link_libraries(fake_imu ${catkin_LIBRARIES} trigger_sync_lib)
-
 target_link_libraries(test_trigger_sync ${catkin_LIBRARIES} trigger_sync_lib)
 target_link_libraries(local_clock_syncroniser ${catkin_LIBRARIES} trigger_sync_lib)
-target_link_libraries(stabilise_camera ${catkin_LIBRARIES})
-
 
 install(PROGRAMS src/plot_clock.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
-
-#############
-## Install ##
-#############
-
-# all install targets should use catkin DESTINATION variables
-# See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
-
-## Mark executable scripts (Python etc.) for installation
-## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
-
-## Mark executables and/or libraries for installation
-# install(TARGETS trigger_sync
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
-
-## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   FILES_MATCHING PATTERN "*.h"
-#   PATTERN ".svn" EXCLUDE
-# )
-
-## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
-
-#############
-## Testing ##
-#############
-
-## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_trigger_sync.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
-
-## Add folders to be run by python nosetests
-# catkin_add_nosetests(test)
