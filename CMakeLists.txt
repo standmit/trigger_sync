@@ -18,6 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
   image_geometry
   message_filters
   camera_info_manager
+  message_generation
 )
 
 ## Generate messages in the 'msg' folder
