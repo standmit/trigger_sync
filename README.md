@@ -5,4 +5,4 @@ TriggerSync is a C++ timing library synchronising the timestamps of multiple tri
 
 **Please find more information on the [wiki pages](https://github.com/englishar/trigger_sync/wiki) of this repository.**
 
-We will be placing source code for TriggerSync in this repository soon. 
+Detailed paper exists in this repository (TriggerSync.pdf)
